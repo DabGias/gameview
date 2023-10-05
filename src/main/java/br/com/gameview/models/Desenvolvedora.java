@@ -3,6 +3,8 @@ package br.com.gameview.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.List;
+
 @Entity
 @Table(
     name = "tb_dev",
@@ -31,6 +33,16 @@ public class Desenvolvedora {
     @NotBlank
     @Column(name = "nome_dev")
     private String nome;
+
+    @OneToMany(
+        fetch = FetchType.EAGER,
+        cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+        },
+        mappedBy = "desenvolvedora"
+    )
+    private List<VideoGame> jogos;
 
     public Desenvolvedora() {}
 

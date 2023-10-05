@@ -16,4 +16,6 @@ public class VideoGameService {
     public List<VideoGame> findAll() {
         return repo.findAll();
     }
+
+    public void save(VideoGame jogo) { repo.save(jogo); }
 }

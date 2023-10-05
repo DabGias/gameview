@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.List;
+
 @Entity
 @Table(
     name = "tb_usuario",
@@ -37,6 +39,16 @@ public class Usuario {
     @Min(value = 8)
     @Column(name = "senha_usuario")
     private String senha;
+
+    @OneToMany(
+        fetch = FetchType.EAGER,
+        cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+        },
+        mappedBy = "usuario"
+    )
+    private List<Comentario> comentarios;
 
     public Usuario() {}
 

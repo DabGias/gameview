@@ -4,6 +4,7 @@ import br.com.gameview.models.VideoGame;
 import br.com.gameview.services.VideoGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class VideoGameController {
     @Autowired
     VideoGameService service;
 
+    @GetMapping
     public List<VideoGame> index() {
         return service.findAll();
     }

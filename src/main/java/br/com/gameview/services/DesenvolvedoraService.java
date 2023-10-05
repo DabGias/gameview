@@ -16,4 +16,6 @@ public class DesenvolvedoraService {
     public List<Desenvolvedora> findAll() {
         return repo.findAll();
     }
+
+    public void save(Desenvolvedora dev) { repo.save(dev); }
 }

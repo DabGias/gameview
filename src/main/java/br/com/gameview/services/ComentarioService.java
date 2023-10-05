@@ -16,4 +16,6 @@ public class ComentarioService {
     public List<Comentario> findAll() {
         return repo.findAll();
     }
+
+    public void save(Comentario comentario) { repo.save(comentario); }
 }
