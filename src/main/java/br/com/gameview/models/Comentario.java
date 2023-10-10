@@ -122,12 +122,6 @@ public class Comentario {
 
     @Override
     public String toString() {
-        return "Comentario{" +
-            "id=" + id +
-            ", nota=" + nota +
-            ", conteudo='" + conteudo + '\'' +
-            ", usuario=" + usuario +
-            ", jogo=" + jogo +
-            '}';
+        return "Comentario [id=" + id + ", nota=" + nota + ", conteudo=" + conteudo + ", usuario=" + usuario + ", jogo=" + jogo + "]";
     }
 }

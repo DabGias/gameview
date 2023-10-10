@@ -31,7 +31,7 @@ public class VideoGame {
     @NotNull
     @Temporal(TemporalType.DATE)
     @Column(name = "dt_lancamento")
-    private LocalDate data_lancamento;
+    private LocalDate dataLancamento;
 
     @ManyToOne(
         fetch = FetchType.EAGER,
@@ -59,16 +59,16 @@ public class VideoGame {
 
     public VideoGame() {}
 
-    public VideoGame(Long id, String nome, LocalDate data_lancamento, Desenvolvedora desenvolvedora) {
+    public VideoGame(Long id, String nome, LocalDate dataLancamento, Desenvolvedora desenvolvedora) {
         this.id = id;
         this.nome = nome;
-        this.data_lancamento = data_lancamento;
+        this.dataLancamento = dataLancamento;
         this.desenvolvedora = desenvolvedora;
     }
 
-    public VideoGame(String nome, LocalDate data_lancamento, Desenvolvedora desenvolvedora) {
+    public VideoGame(String nome, LocalDate dataLancamento, Desenvolvedora desenvolvedora) {
         this.nome = nome;
-        this.data_lancamento = data_lancamento;
+        this.dataLancamento = dataLancamento;
         this.desenvolvedora = desenvolvedora;
     }
 
@@ -88,12 +88,12 @@ public class VideoGame {
         this.nome = nome;
     }
 
-    public LocalDate getData_lancamento() {
-        return data_lancamento;
+    public LocalDate getDataLancamento() {
+        return dataLancamento;
     }
 
-    public void setData_lancamento(LocalDate data_lancamento) {
-        this.data_lancamento = data_lancamento;
+    public void setDataLancamento(LocalDate dataLancamento) {
+        this.dataLancamento = dataLancamento;
     }
 
     public Desenvolvedora getDesenvolvedora() {
@@ -106,11 +106,6 @@ public class VideoGame {
 
     @Override
     public String toString() {
-        return "VideoGame{" +
-            "id=" + id +
-            ", nome='" + nome + '\'' +
-            ", data_lancamento=" + data_lancamento +
-            ", desenvolvedora=" + desenvolvedora +
-            '}';
+        return "VideoGame [id=" + id + ", nome=" + nome + ", dataLancamento=" + dataLancamento + ", desenvolvedora=" + desenvolvedora + "]";
     }
 }

@@ -5,15 +5,11 @@ import br.com.gameview.models.Desenvolvedora;
 import br.com.gameview.models.Usuario;
 import br.com.gameview.models.VideoGame;
 import br.com.gameview.services.ComentarioService;
-import br.com.gameview.services.DesenvolvedoraService;
-import br.com.gameview.services.UsuarioService;
-import br.com.gameview.services.VideoGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Configuration
 public class DatabaseSeeder implements CommandLineRunner {

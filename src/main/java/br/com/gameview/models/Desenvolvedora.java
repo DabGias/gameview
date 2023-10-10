@@ -73,9 +73,6 @@ public class Desenvolvedora {
 
     @Override
     public String toString() {
-        return "Desenvolvedora{" +
-            "id=" + id +
-            ", nome='" + nome + '\'' +
-            '}';
+        return "Desenvolvedora [id=" + id + ", nome=" + nome + "]";
     }
 }

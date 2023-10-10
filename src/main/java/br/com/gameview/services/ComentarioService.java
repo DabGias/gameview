@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ComentarioService {
@@ -17,5 +18,19 @@ public class ComentarioService {
         return repo.findAll();
     }
 
+    public Optional<Comentario> findById(Long id) {
+        return repo.findById(id);
+    }
+
     public void save(Comentario comentario) { repo.save(comentario); }
+
+    public boolean delete(Long id) {
+        if (repo.findById(id).isEmpty()) {
+            return false;
+        } else {
+            repo.deleteById(id);
+
+            return true;
+        }
+    }
 }
