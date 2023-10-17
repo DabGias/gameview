@@ -7,13 +7,24 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="../../static/style/reset.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <title>GameView - Jogos</title>
     </head>
     <body>
-        <main>
-            <div th:each="jogo: ${jogos}">
-                <p th:text="${jogo.nome}"></p>
-                <p th:text="${jogo.dataLancamento}"></p>
+        <nav class="nav-wrapper indigo darken-3">
+            <a href="/jogos" class="brand-logo">Game<span class="red-text">View</span></a>
+
+            <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+                <li><a href="/jogos">Jogos</a></li>
+                <li><a href="/comentarios">Comentários</a></li>
+                <li><a href="/devs">Desenvolvedoras</a></li>
+            </ul>
+        </nav>
+        <main class="container center">
+            <div class="card-panel hoverable" th:each="jogo: ${jogos}">
+                <h5 class="left-align" th:text="${jogo.nome}"></h5>
+                <h6 class="left-align" th:text="${jogo.desenvolvedora.nome}"></h6>
+                <p class="left-align" th:text="${jogo.dataLancamento.getDayOfMonth()} + '/' + ${jogo.dataLancamento.getMonthValue()} + '/' + ${jogo.dataLancamento.getYear()}"></p>
             </div>
         </main>
     </body>

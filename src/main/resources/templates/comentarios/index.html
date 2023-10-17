@@ -7,15 +7,25 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="../../static/style/reset.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <title>GameView - Comentários</title>
     </head>
     <body>
-        <main>
-            <div th:each="coment: ${coments}">
-                <p th:text="${coment.nota}"></p>
-                <p th:text="${coment.conteudo}"></p>
-                <p th:text="${coment.usuario}"></p>
-                <p th:text="${coment.jogo}"></p>
+        <nav class="nav-wrapper indigo darken-3">
+            <a href="/jogos" class="brand-logo">Game<span class="red-text">View</span></a>
+
+            <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+                <li><a href="/jogos">Jogos</a></li>
+                <li><a href="/comentarios">Comentários</a></li>
+                <li><a href="/devs">Desenvolvedoras</a></li>
+            </ul>
+        </nav>
+        <main class="container center">
+            <div class="card-panel hoverable" th:each="coment: ${coments}">
+                <h5 class="left-align" th:text="${coment.usuario.username}"></h5>
+                <h6 class="left-align" th:text="${coment.nota}"></h6>
+                <p class="left-align" th:text="${coment.conteudo}"></p>
+                <p class="left-align" th:text="${coment.jogo.nome}"></p>
             </div>
         </main>
     </body>
