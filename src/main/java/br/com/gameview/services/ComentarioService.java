@@ -24,6 +24,8 @@ public class ComentarioService {
 
     public void save(Comentario comentario) { repo.save(comentario); }
 
+    public void saveAll(List<Comentario> comentarios) { repo.saveAll(comentarios); }
+
     public boolean delete(Long id) {
         if (repo.findById(id).isEmpty()) {
             return false;

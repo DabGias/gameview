@@ -24,6 +24,8 @@ public class DesenvolvedoraService {
 
     public void save(Desenvolvedora dev) { repo.save(dev); }
 
+    public void saveAll(List<Desenvolvedora> desenvolvedoras) { repo.saveAll(desenvolvedoras); }
+
     public boolean delete(Long id) {
         if (repo.findById(id).isEmpty()) {
             return false;

@@ -11,14 +11,14 @@
         <title>GameView - Login</title>
     </head>
     <body>
-        <main class="container center">
+        <main class="container center" style="min-height: 100vh;">
             <h1>Game<span class="red-text">View</span></h1>
 
-            <p>Bem-vindo(a) ao Game<span class="red-text">View</span>! Sua plataforma de análises de jogos.</p>
+            <p th:text="#{login.greeting}"></p>
 
             <a href="/oauth2/authorization/github" class="btn">
                 <i class="material-icons left">account_circle</i>
-                Entrar com GitHub
+                <span th:text="#{login.button}"></span>
             </a>
         </main>
     </body>

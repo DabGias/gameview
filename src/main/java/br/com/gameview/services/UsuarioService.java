@@ -24,6 +24,8 @@ public class UsuarioService {
 
     public void save(Usuario usuario) { repo.save(usuario); }
 
+    public void saveAll(List<Usuario> usuarios) { repo.saveAll(usuarios); }
+
     public boolean delete(Long id) {
         if (repo.findById(id).isEmpty()) {
             return false;

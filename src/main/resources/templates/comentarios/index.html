@@ -15,18 +15,27 @@
             <a href="/jogos" class="brand-logo">Game<span class="red-text">View</span></a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down"> 
-                <li><a href="/jogos">Jogos</a></li>
-                <li><a href="/comentarios">Comentários</a></li>
-                <li><a href="/devs">Desenvolvedoras</a></li>
+                <li><a th:text="#{nav.options.games}"  href="/jogos">Jogos</a></li>
+                <li><a th:text="#{nav.options.coments}"  href="/comentarios">Comentários</a></li>
+                <li><a th:text="#{nav.options.devs}"  href="/devs">Desenvolvedoras</a></li>
             </ul>
         </nav>
-        <main class="container center">
+        <main class="container center" style="min-height: 100vh;">
             <div class="card-panel hoverable" th:each="coment: ${coments}">
-                <h5 class="left-align" th:text="${coment.usuario.username}"></h5>
-                <h6 class="left-align" th:text="${coment.nota}"></h6>
-                <p class="left-align" th:text="${coment.conteudo}"></p>
+                <h5 class="left-align" th:text="${coment.usuario.username} + ' - ' + ${coment.nota} + '/5'"></h5>
                 <p class="left-align" th:text="${coment.jogo.nome}"></p>
+                <p class="left-align" th:text="${coment.conteudo}"></p>
             </div>
         </main>
+        <footer class="page-footer indigo darken-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h5 th:text="#{footer.duo}" class="white-text center-align"></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright indigo darken-3"></div>
+        </footer>
     </body>
 </html>

@@ -24,6 +24,8 @@ public class VideoGameService {
 
     public void save(VideoGame jogo) { repo.save(jogo); }
 
+    public void saveAll(List<VideoGame> jogos) { repo.saveAll(jogos); }
+
     public boolean delete(Long id) {
         if (repo.findById(id).isEmpty()) {
             return false;

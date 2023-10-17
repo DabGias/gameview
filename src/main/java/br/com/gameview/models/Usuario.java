@@ -1,8 +1,8 @@
 package br.com.gameview.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class Usuario {
     private String username;
 
     @NotBlank
-    @Min(value = 8)
+    @Size(min = 8)
     @Column(name = "senha_usuario")
     private String senha;
 

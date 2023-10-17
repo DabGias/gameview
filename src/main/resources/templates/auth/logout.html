@@ -11,21 +11,21 @@
         <title>GameView - Logout</title>
     </head>
     <body>
-        <main class="container center">
+        <main class="container center" style="min-height: 100vh;">
             <h1>Game<span class="red-text">View</span></h1>
 
-            <p>Tem certeza que deseja sair?</p>
+            <p th:text="#{logout.text}"></p>
 
             <div class="row">
-                <a href="/jogos" class="btn grey col s6">
+                <a  href="/jogos" class="btn grey col s6">
                     <i class="material-icons left">home</i>
-                    Voltar ao menu principal
+                    <span th:text="#{logout.backButton.text}"></span>
                 </a>
 
                 <form th:action="${'/logout'}" method="post">
                     <button class="btn col s6">
                         <i class="material-icons left">exit_to_app</i>
-                        Sair
+                        <span th:text="#{logout.exitButton.text}"></span>
                     </button>
                 </form>
             </div>
