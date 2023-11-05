@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang=pt-BR xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{_template :: head('Nova Desenvolvedora')}"></head>
+    <body>
+        <div class="container">
+            <h3>Nova Desenvolvedora</h3>
+
+            <div class="row">
+                <form th:action="${'/devs'}" method="post" class="col s12" th:object="${desenvolvedora}">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input th:field="*{nome}" type="text" th:classappend="${#fields.hasErrors('nome')} ? invalid">
+                            <label for="nome">Nome</label>
+                            <span class="helper-text red-text" th:errors="*{nome}"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="/devs" class="btn grey">cancelar</a>
+                        <button class="btn">salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

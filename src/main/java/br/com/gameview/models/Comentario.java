@@ -24,7 +24,7 @@ public class Comentario {
     private Long id;
 
     @NotNull
-    @Min(value = 0)
+    @Min(value = 1)
     @Max(value = 5)
     @Column(name = "nota_coment")
     private int nota;
@@ -33,39 +33,15 @@ public class Comentario {
     @Column(name = "conteudo_coment")
     private String conteudo;
 
-    @NotNull
-    @ManyToOne(
-        fetch = FetchType.EAGER,
-        cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-        }
-    )
-    @JoinColumn(
-        name = "id_usuario",
-        referencedColumnName = "id_usuario",
-        foreignKey = @ForeignKey(name = "uk_tb_usuario")
-    )
-    private Usuario usuario;
+    @Column(name = "usuario_coment")
+    private String usuario;
 
-    @NotNull
-    @ManyToOne(
-        fetch = FetchType.EAGER,
-        cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-        }
-    )
-    @JoinColumn(
-        name = "id_jogo",
-        referencedColumnName = "id_jogo",
-        foreignKey = @ForeignKey(name = "fk_tb_jogo")
-    )
-    private VideoGame jogo;
+    @Column(name = "jogo_coment")
+    private String jogo;
 
     public Comentario() {}
 
-    public Comentario(Long id, int nota, String conteudo, Usuario usuario, VideoGame jogo) {
+    public Comentario(Long id, @NotNull @Min(1) @Max(5) int nota, @NotBlank String conteudo, @NotBlank String usuario, @NotBlank String jogo) {
         this.id = id;
         this.nota = nota;
         this.conteudo = conteudo;
@@ -73,7 +49,7 @@ public class Comentario {
         this.jogo = jogo;
     }
 
-    public Comentario(int nota, String conteudo, Usuario usuario, VideoGame jogo) {
+    public Comentario(@NotNull @Min(1) @Max(5) int nota, @NotBlank String conteudo, @NotBlank String usuario, @NotBlank String jogo) {
         this.nota = nota;
         this.conteudo = conteudo;
         this.usuario = usuario;
@@ -104,19 +80,19 @@ public class Comentario {
         this.conteudo = conteudo;
     }
 
-    public Usuario getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
-    public VideoGame getJogo() {
+    public String getJogo() {
         return jogo;
     }
 
-    public void setJogo(VideoGame jogo) {
+    public void setJogo(String jogo) {
         this.jogo = jogo;
     }
 

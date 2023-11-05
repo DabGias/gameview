@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang=pt-BR xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{_template :: head('Novo Comentário')}"></head>
+    <body>
+        <div class="container">
+            <h3>Novo Comentário</h3>
+
+            <div class="row">
+                <form th:action="${'/comentarios'}" method="post" class="col s12" th:object="${comentario}">
+                    <div class="input-field col s12">
+                        <select class="select-jogo browser-default">
+                            <option disabled selected>Escolha um Jogo</option>
+                            <option th:each="jogo : ${jogos}" th:value="${jogo.nome}" th:text="${jogo.nome}"></option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p class="range-field">
+                                <label for="nota">Nota</label>
+                                <input th:field="*{nota}" type="range" min="1" max="5" />
+                                <span class="helper-text red-text" th:errors="*{nota}"></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea 
+                                th:field="*{conteudo}" 
+                                class="materialize-textarea"
+                                th:classappend="${#fields.hasErrors('conteudo')} ? invalid"
+                            ></textarea>
+                            <label for="conteudo">Comentário</label>
+                            <span class="helper-text red-text" th:errors="*{conteudo}"></span>
+                        </div>  
+                    </div>
+                    <div>
+                        <a href="/comentarios" class="btn grey">cancelar</a>
+                        <button class="btn">salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

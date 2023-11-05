@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "tb_jogo")
@@ -30,43 +29,23 @@ public class VideoGame {
 
     @NotNull
     @Temporal(TemporalType.DATE)
-    @Column(name = "dt_lancamento")
+    @Column(name = "dt_lancamento_jogo")
     private LocalDate dataLancamento;
 
-    @ManyToOne(
-        fetch = FetchType.EAGER,
-        cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-        }
-    )
-    @JoinColumn(
-        name = "id_dev",
-        referencedColumnName = "id_dev",
-        foreignKey = @ForeignKey(name = "fk_tb_dev")
-    )
-    private Desenvolvedora desenvolvedora;
-
-    @OneToMany(
-        fetch = FetchType.EAGER,
-        cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-        },
-        mappedBy = "jogo"
-    )
-    private List<Comentario> comentarios;
+    @NotBlank
+    @Column(name = "dev_jogo")
+    private String desenvolvedora;
 
     public VideoGame() {}
 
-    public VideoGame(Long id, String nome, LocalDate dataLancamento, Desenvolvedora desenvolvedora) {
+    public VideoGame(Long id, @NotBlank String nome, @NotNull LocalDate dataLancamento, @NotBlank String desenvolvedora) {
         this.id = id;
         this.nome = nome;
         this.dataLancamento = dataLancamento;
         this.desenvolvedora = desenvolvedora;
     }
 
-    public VideoGame(String nome, LocalDate dataLancamento, Desenvolvedora desenvolvedora) {
+    public VideoGame(@NotBlank String nome, @NotNull LocalDate dataLancamento, @NotBlank String desenvolvedora) {
         this.nome = nome;
         this.dataLancamento = dataLancamento;
         this.desenvolvedora = desenvolvedora;
@@ -96,11 +75,11 @@ public class VideoGame {
         this.dataLancamento = dataLancamento;
     }
 
-    public Desenvolvedora getDesenvolvedora() {
+    public String getDesenvolvedora() {
         return desenvolvedora;
     }
 
-    public void setDesenvolvedora(Desenvolvedora desenvolvedora) {
+    public void setDesenvolvedora(String desenvolvedora) {
         this.desenvolvedora = desenvolvedora;
     }
 

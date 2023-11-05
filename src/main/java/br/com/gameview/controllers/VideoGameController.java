@@ -1,6 +1,7 @@
 package br.com.gameview.controllers;
 
 import br.com.gameview.models.VideoGame;
+import br.com.gameview.services.DesenvolvedoraService;
 import br.com.gameview.services.VideoGameService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,21 @@ public class VideoGameController {
     @Autowired
     VideoGameService service;
 
+    @Autowired
+    DesenvolvedoraService devService;
+
     @GetMapping
     public String index(Model model) {
         model.addAttribute("jogos", service.findAll());
 
         return "jogos/index";
+    }
+
+    @GetMapping("/new")
+    public String form(VideoGame jogo, Model model) {
+        model.addAttribute("devs",devService.findAll());
+
+        return "jogos/form";
     }
 
     @PostMapping

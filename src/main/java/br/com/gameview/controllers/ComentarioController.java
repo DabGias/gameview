@@ -2,8 +2,11 @@ package br.com.gameview.controllers;
 
 import br.com.gameview.models.Comentario;
 import br.com.gameview.services.ComentarioService;
+import br.com.gameview.services.VideoGameService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +23,9 @@ public class ComentarioController {
     @Autowired
     ComentarioService service;
 
+    @Autowired
+    VideoGameService jogoService;
+
     @GetMapping
     public String index(Model model) {
         model.addAttribute("coments", service.findAll());
@@ -27,9 +33,20 @@ public class ComentarioController {
         return "comentarios/index";
     }
 
+    @GetMapping("/new")
+    public String form(Comentario coment, Model model) {
+        model.addAttribute("jogos", jogoService.findAll());
+
+        return "comentarios/form";
+    }
+
     @PostMapping
-    public String create(@Valid Comentario coment, RedirectAttributes redirect, BindingResult result) {
+    public String create(@Valid Comentario coment, @AuthenticationPrincipal OAuth2User user, RedirectAttributes redirect, BindingResult result) {
         if (result.hasErrors()) return "/comentarios";
+
+        coment.setUsuario(user.getAttribute("name"));
+
+        System.out.println(coment);
 
         service.save(coment);
 

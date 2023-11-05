@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang=pt-BR xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{_template :: head('Novo Jogo')}"></head>
+    <body>
+        <div class="container">
+            <h3>Novo Jogo</h3>
+
+            <div class="row">
+                <form th:action="${'/jogos'}" method="post" class="col s12" th:object="${jogo}">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input th:field="*{nome}" type="text" th:classappend="${#fields.hasErrors('nome')} ? invalid">
+                            <label for="nome">Nome</label>
+                            <span class="helper-text red-text" th:errors="*{nome}"></span>
+                        </div>
+                        <div class="input-field col s12">
+                            <input th:field="*{dataLancamento}" type="text" class="datepicker">
+                            <label for="dataLancamento">Data de Lançamento</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <select class="select-dev browser-default">
+                                <option disabled selected>Escolha uma Desenvolvedora</option>
+                                <option th:each="dev : ${devs}" th:value="${dev.nome}" th:text="${dev.nome}"></option>
+                            </select>
+                        </div>
+                        <div>
+                            <a href="/jogos" class="btn grey">cancelar</a>
+                            <button class="btn">salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

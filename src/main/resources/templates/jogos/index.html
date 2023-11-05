@@ -1,41 +1,20 @@
 <!doctype html>
 <html lang=pt-BR xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" href="../../static/style/reset.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <title>GameView - Jogos</title>
-    </head>
+    <head th:replace="~{_template :: head('Jogos')}"></head>
     <body>
-        <nav class="nav-wrapper indigo darken-3">
-            <a href="/jogos" class="brand-logo">Game<span class="red-text">View</span></a>
-
-            <ul id="nav-mobile" class="right hide-on-med-and-down"> 
-                <li><a th:text="#{nav.options.games}"  href="/jogos">Jogos</a></li>
-                <li><a th:text="#{nav.options.coments}"  href="/comentarios">Comentários</a></li>
-                <li><a th:text="#{nav.options.devs}"  href="/devs">Desenvolvedoras</a></li>
-            </ul>
-        </nav>
+        <nav th:replace="~{_template :: #navbar}"></nav>
         <main class="container center" style="min-height: 100vh;">
             <div class="card-panel hoverable" th:each="jogo: ${jogos}">
                 <h5 class="left-align" th:text="${jogo.nome}"></h5>
-                <h6 class="left-align" th:text="${jogo.desenvolvedora.nome}"></h6>
+                <h6 class="left-align" th:text="${jogo.desenvolvedora}"></h6>
                 <p class="left-align" th:text="${jogo.dataLancamento.getDayOfMonth()} + '/' + ${jogo.dataLancamento.getMonthValue()} + '/' + ${jogo.dataLancamento.getYear()}"></p>
             </div>
         </main>
-        <footer class="page-footer indigo darken-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <h5 th:text="#{footer.duo}" class="white-text center-align"></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright indigo darken-3"></div>
-        </footer>
+        <div class="fixed-action-btn">
+            <a href="/jogos/new" class="btn-floating btn-large red indigo darken-1">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+        <footer th:replace="~{_template :: #page-footer}"></footer>
     </body>
 </html>

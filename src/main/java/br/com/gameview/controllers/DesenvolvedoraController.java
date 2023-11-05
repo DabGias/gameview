@@ -27,6 +27,11 @@ public class DesenvolvedoraController {
         return "devs/index";
     }
 
+    @GetMapping("/new")
+    public String form(Desenvolvedora dev) {
+        return "devs/form";
+    }
+
     @PostMapping
     public String create(@Valid Desenvolvedora dev, RedirectAttributes redirect, BindingResult result) {
         if (result.hasErrors()) return "/devs";
